@@ -1,0 +1,72 @@
+#include <stdio.h>
+#include <malloc.h>
+struct node
+{ 
+  int data;
+  struct node *next;
+};
+struct node *start=NULL;
+struct node *temp,*current,*temp1,*newnode;
+void create(int n)
+{
+  int i;
+  for(i=0;i<n;i++)
+  {
+    newnode=(struct node*)malloc(sizeof(struct node));
+    scanf("%d",&newnode->data);
+    newnode->next=NULL;
+    if(start==NULL)
+    {
+start=newnode;
+      current=newnode;
+    }
+    else
+    {
+current->next=newnode;
+      current=newnode;
+    }
+  }
+}
+    void insert(int no,int n)
+    {
+      int i;
+      temp=start;
+ for(i=1;i<no;i++)
+ {
+   temp1=temp;
+   temp=temp->next;
+ }
+    newnode=(struct node*)malloc(sizeof(struct node));
+      scanf("%d",&newnode->data);
+      temp1->next=newnode;
+      newnode->next=temp;
+    }
+    void display(int n,int no)
+    {temp=start;
+      if(n<no)
+      {
+        printf("Invalid Position!\n");
+      }
+        printf("Linked List\n");
+     while(temp!=NULL)
+     {
+       printf("->%d",temp->data);
+       temp=temp->next;
+     }
+    }
+    
+    
+    
+    int main()
+{ 
+  int n,no; 
+  scanf("%d",&n);
+  create(n);
+  scanf("%d",&no);
+  if(n>=no)
+  {
+    insert(no,n);
+  }
+  display(n,no);
+    return 0;
+}
